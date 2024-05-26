@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Secteurs - Centrale de Cas</title>
+    <meta name="description" content="Explorez les différents secteurs avec nos études de cas détaillées." />
+    <meta name="author" content="YourName" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/acceuil.css" />
+    <script src="js/libs/modernizr-2.0.6.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #f4f7fa;
+            color: #333;
+        }
+
+        .header {
+            background-color: #f2f2f2;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            height: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .header-link {
+            text-decoration: none;
+            color: #000;
+            margin-left: 20px;
+            font-size: 0.9em;
+            font-style: italic;
+            padding: 7px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .header-link:hover,
+        .header-link:focus {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sector {
+            width: 250px;
+            height: 250px;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #f2f2f2;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #f2f2f2;
+        }
+
+        .sector img {
+            width: 100%;
+            height: auto;
+        }
+
+        .sector h2 {
+            color: #333;
+            font-size: 16px;
+        }
+
+        .sector a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sector a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .introduction {
+            text-align: center;
+            padding: 30px;
+            font-size: 25px;
+            /*Taille du lego jaune + TEXTE */
+            margin-top: 20px;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            /* Adds space between the icon and the text */
+        }
+
+        .introduction i {
+            font-size: 38px;
+            /* Agrandi la taille de l'icône */
+        }
+
+        .fa-lightbulb-o {
+            color: #e7c819;
+            /* Gives a gold-like color to the lightbulb icon */
+        }
+
+        .fa-download {
+            margin-right: 5px;
+        }
+
+        .business-case {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 1px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            display: block;
+            /* Change to block to allow margin auto to work */
+            text-align: center;
+            margin: 10px auto;
+            /* Centers the button horizontally */
+            width: 180px;
+            max-width: 200px;
+            /* Adjust max width as needed */
+        }
+
+        .business-case i {
+            margin-right: 5px;
+            /* Space between icon and text */
+        }
+
+        .business-case:hover {
+            transform: translateY(-2px);
+            /* Zoom effect on hover */
+        }
+
+        .popup-form {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+        .form-container {
+            background-color: #f2f2f2;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 95%; /* Largeur réduite */
+            max-width: 600px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            font-size: 1.35em;
+        }
+
+        .form-container label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="file"] {
+            width: calc(100% - 10px);
+            /* Ajustement pour les bordures */
+            padding: 11px;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            background-color: #ece6e6d4;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-container button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 1px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            display: block;
+            /* Change to block to allow margin auto to work */
+            text-align: center;
+            margin: 10px auto;
+            /* Centers the button horizontally */
+            width: 180px;
+            max-width: 300px;
+            /* Adjust max width as needed */
+        }
+
+        .form-container button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 33px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        .add-project-icon {
+            font-size: 75px;
+            cursor: pointer;
+            color: rgb(5, 120, 5);
+            margin: auto;
+        }
+        .add-project-icon:hover{
+            transform: scale(1.1);
+        }
+        .delete-case {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgb(178, 150, 150);
+            color: white;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 2px 5px;  /* Ajusté pour moins de padding, plus carré */
+            border-radius: 0;  /* Aucun arrondi pour un look carré */
+        }
+
+        .delete-case:hover {
+            background-color: rgb(115, 44, 44);
+        }
+        .file-input-label {
+            display: inline-block;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .file-input-label .file-type {
+            color: rgb(232, 0, 0);
+        }
+        /* Spécifier l'icône de fichier PDF et changer sa couleur en rouge */
+        .fa-file-pdf-o {
+            color: rgb(236, 2, 2);
+            margin-right: 7px; /* Ajoute un espace de 10px entre l'icône et le texte */
+        }
+        #pdf-preview {
+            width: 100%;
+            height: 500px;
+            display: none;
+            border: 1px solid #ccc;
+        }
+        footer {
+            margin-top: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="https://i.ibb.co/yspdyT8/centrale-de-cas-high-resolution-logo-transparent-1.png" alt="Centrale de Cas Logo" class="header-logo">
+        <div class="nav-links">
+            <a href="acceuil.html" class="header-link">Accueil</a>
+            <a href="#forum" class="header-link">Forum de Discussion</a>
+            <a href="connexion.html" class="header-link">Déconnexion</a>
+        </div>
+    </div>
+    <div class="introduction">
+        <i class="fa fa-lightbulb-o"></i> Découvrez nos études de cas sur l'innovation énergétique!
+    </div>
+    <div class="main-content">
+        <div class="sector" id="sector1">
+            <h2> Microgrids: Etude sur les perspectives stratégiques de l'énergie </h2>
+            <a href="http://fichiers.cre.fr/Etude-perspectives-strategiques/3Theses/7_These_Microgrids.pdf" download="Nom_du_fichier1.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <button class="business-case">Quiz</button>
+            <div class="case-content"></div>
+        </div>
+        <div class="sector" id="sector2">
+            <h2> "Assistant Chargé d'affaires du secteur photovoltaïque" par BERTIN PIERRE</h2>
+            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE4_Bertin_Pierre_rapport.pdf" download="Nom_du_fichier2.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <button class="business-case">Quiz</button>
+            <div class="case-content"></div>
+        </div>
+        <div class="sector" id="sector3">
+            <h2>Stage énergéticien du bâtiment par CYRIL TOUSSAINT</h2>
+            <a href="http://memoires.scd.univ-tours.fr/EPU_DA/LOCAL/2021stg_DAE5_Toussaint_Cyril_rapport.pdf" download="Nom_du_fichier3.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <button class="business-case">Quiz</button>
+            <div class="case-content"></div>
+        </div>
+        <div class="sector" id="sector4">
+            <h2>Audit énergétique d'un bâtiment de bureaux : Proposition de stratégies de rénovation</h2>
+            <a href="https://matheo.uliege.be/bitstream/2268.2/2404/1/2009_2010_BELLIGOI_Thomas.pdf" download="Nom_du_fichier4.pdf"><i class="fa fa-download"></i>Télécharger PDF</a>
+            <button class="business-case">Quiz</button>
+            <div class="case-content"></div>
+        </div>
+        <div id="add-project" class="sector">
+            <div class="add-project-icon">+</div>
+            <h2>Déposer votre propre rapport de projet.</h2>
+        </div>
+        <!-- Fenêtre modale pour le Quiz -->
+        <div id="quiz-modal" class="popup-form" style="display: none;">
+            <div class="form-container">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <iframe id="quiz-iframe" src="quiz.html" frameborder="0" style="width:100%; height:80vh;"></iframe>
+            </div>
+        </div>
+
+        <!-- Bloc pour déposer le rapport de projet -->
+        <div id="project-form" class="popup-form">
+            <div class="form-container">
+                <span class="close">&times;</span>
+                <h2>Déposer votre propre rapport de projet</h2>
+                <form id="project-upload-form" enctype="multipart/form-data">
+                    <div>
+                        <label for="full-name">Nom et Prénom:</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div>
+                        <label for="project-title">Titre de votre projet:</label>
+                        <input type="text" id="project-title" name="project-title" required>
+                    </div>
+                    <div>
+                        <label for="file-upload"><i class="fa fa-file-pdf-o"></i> Charger un document:</label>
+                        <input type="file" id="file-upload" name="file-upload" accept=".pdf" required>
+                        <label class="file-input-label" for="file-upload">Veuillez déposer votre rapport sous format <span class="file-type">.pdf</span></label>
+                    </div>
+                    <div>
+                        <iframe id="pdf-preview"></iframe>
+                    </div>
+                    <div>
+                        <button type="submit" id="submit-project">Charger</button>
+                    </div>
+                </form>
+                <div id="file-error-message" style="display: none; color: red; margin-top: 10px;">
+                    <i class="fa fa-exclamation-triangle"></i> Veuillez sélectionner un fichier PDF.
+                </div>            
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Centrale de Cas. Tous droits réservés.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var quizModal = document.getElementById('quiz-modal');
+    var quizForm = document.getElementById('quiz-form');
+
+    document.querySelectorAll('.business-case').forEach(function(button) {
+        button.addEventListener('click', function() {
+            quizModal.style.display = 'block'; // Affiche la fenêtre modale
+        });
+    });
+
+    document.getElementById('quiz-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var answer1 = document.getElementById('question1').value.trim();
+        if (answer1 === "") {
+            alert('Veuillez répondre à la question.');
+        } else {
+            alert('Merci pour votre réponse: ' + answer1);
+            quizModal.style.display = 'none'; // Ferme la modale après soumission
+        }
+    });
+
+    window.onclick = function(event) {
+        if (event.target === quizModal) {
+            quizModal.style.display = 'none';
+        }
+    };
+});
+
+function closeModal() {
+    document.getElementById('quiz-modal').style.display = 'none';
+}
+
+        document.addEventListener('DOMContentLoaded', function () {
+    var addProjectButton = document.getElementById('add-project');
+    var projectForm = document.getElementById('project-form');
+    var closeButton = projectForm.querySelector('.close');
+    var submitButton = document.getElementById('submit-project');
+    var fileUpload = document.getElementById('file-upload');
+    var pdfPreview = document.getElementById('pdf-preview');
+    var fileErrorMessage = document.getElementById('file-error-message');
+    var fileInputLabel = document.querySelector('.file-input-label');
+
+    function loadProjects() {
+        var projects = JSON.parse(localStorage.getItem('projects') || '[]');
+        projects.forEach(function(project, index) {
+            addProjectBlock(project.title, project.fullName, project.fileContent, project.fileName, index);
+        });
+    }
+
+    function addProjectBlock(title, fullName, fileContent, fileName, index) {
+        var caseContent = document.createElement('div');
+        caseContent.classList.add('sector');
+        caseContent.style.position = 'relative';
+        caseContent.innerHTML = '<h2>' + title + '</h2>' +
+            '<a href="' + fileContent + '" download="' + fileName + '"><i class="fa fa-download"></i>Télécharger PDF</a>' +
+            '<button class="business-case">Quiz</button>' +
+            '<div class="case-content"></div>';
+
+        var deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-case');
+        deleteButton.innerHTML = '&times;';
+        deleteButton.onclick = function () {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce projet ?')) {
+                deleteProject(index);
+                caseContent.remove();
+            }
+        };
+        caseContent.appendChild(deleteButton);
+        addProjectButton.parentNode.insertBefore(caseContent, addProjectButton);
+    }
+
+    function deleteProject(index) {
+        var projects = JSON.parse(localStorage.getItem('projects') || '[]');
+        projects.splice(index, 1);
+        localStorage.setItem('projects', JSON.stringify(projects));
+    }
+
+    fileUpload.onchange = function () {
+        var file = this.files[0];
+        if (file) {
+            var fileName = file.name;
+            var extension = fileName.split('.').pop().toLowerCase();
+            if (extension === 'pdf') {
+                fileInputLabel.textContent = 'Fichier choisi: ' + fileName;
+                pdfPreview.style.display = 'block';
+                pdfPreview.src = URL.createObjectURL(file);
+                fileErrorMessage.style.display = 'none';
+            } else {
+                fileInputLabel.textContent = 'Choisir un fichier .pdf';
+                pdfPreview.style.display = 'none';
+                fileErrorMessage.style.display = 'block';
+                fileUpload.value = ''; // Réinitialiser le champ de fichier
+            }
+        }
+    };
+
+    loadProjects();
+
+    addProjectButton.addEventListener('click', function () {
+        projectForm.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function () {
+        projectForm.style.display = 'none';
+        pdfPreview.style.display = 'none';
+    });
+
+    submitButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        var fullName = document.getElementById('full-name').value.trim();
+        var projectTitle = document.getElementById('project-title').value.trim();
+        var file = fileUpload.files[0];
+
+        if (!fullName) {
+            alert('Veuillez entrer votre nom et prénom.');
+            return;
+        }
+
+        if (!projectTitle) {
+            alert('Veuillez entrer le titre de votre projet.');
+            return;
+        }
+
+        if (!file) {
+            alert('Veuillez charger un fichier PDF valide.');
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function () {
+            var uploadedFileContent = reader.result;
+            var uploadedFileName = file.name;
+
+            var projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            var newIndex = projects.length;
+            addProjectBlock(projectTitle, fullName, uploadedFileContent, uploadedFileName, newIndex);
+
+            projects.push({
+                title: projectTitle,
+                fullName: fullName,
+                fileContent: uploadedFileContent,
+                fileName: uploadedFileName
+            });
+            localStorage.setItem('projects', JSON.stringify(projects));
+
+            projectForm.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    });
+})
+
+</script> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var quizButtons = document.querySelectorAll('.business-case'); // Tous les boutons de quiz
+
+        quizButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('quiz-modal').style.display = 'block'; // Affiche la fenêtre modale
+            });
+        });
+
+        var closeBtn = document.querySelector('.close');
+        closeBtn.addEventListener('click', function() {
+            closeModal();
+        });
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('quiz-modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    });
+
+    function closeModal() {
+        document.getElementById('quiz-modal').style.display = 'none';
+    }
+    </script>      
+    <script>
+        window.embeddedChatbotConfig = {
+          chatbotId: "IbeEBj8NpfRvA1-BPlXTE",
+          domain: "www.chatbase.co"
+        };
+      </script>
+      <script src="https://www.chatbase.co/embed.min.js" defer></script> 
+</body>
+</html>
